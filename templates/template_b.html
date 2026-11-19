@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+@font-face { font-family:'NotoDev'; src:url('file://{{ fonts_dir }}/NotoSansDevanagari.ttf'); font-weight:400 800; }
+@font-face { font-family:'Manrope'; src:url('file://{{ fonts_dir }}/Manrope.ttf'); font-weight:400 800; }
+@font-face { font-family:'Anton'; src:url('file://{{ fonts_dir }}/Anton-Regular.ttf'); }
+
+:root{ --blue:#1818F0; --red:#F01800; --yellow:#FFE600; --ink:#111111; }
+*{ box-sizing:border-box; margin:0; padding:0; }
+body{ width:{{ canvas_w }}px; height:{{ canvas_h }}px; position:relative; overflow:hidden;
+  background:#0A0A0A; font-family:'NotoDev','Manrope',sans-serif; color:#fff; }
+
+.photo-bleed{ position:absolute; top:0; left:0; width:100%; height:64%; overflow:hidden; }
+.photo-bleed img{ width:100%; height:100%; object-fit:cover; display:block; }
+.photo-bleed .scrim{ position:absolute; inset:0; background:linear-gradient(to bottom, rgba(0,0,0,0) 55%, #0A0A0A 100%); }
+.dotgrid{ position:absolute; width:110px; opacity:.5; }
+.dotgrid.tl{ top:3%; left:3%; } .dotgrid.br{ bottom:3%; right:3%; transform:rotate(180deg); }
+
+.logo{ position:absolute; left:30%; top:55%; width:11%; z-index:3; text-align:center; }
+.logo img{ width:100%; display:block; filter:drop-shadow(0 2px 6px rgba(0,0,0,.6)); }
+
+.congrats{ position:absolute; top:60.5%; width:100%; text-align:center; z-index:3;
+  font-family:'Anton'; letter-spacing:2px; font-size:66px; color:var(--yellow);
+  text-shadow:0 3px 10px rgba(0,0,0,.6); }
+
+.citation{ position:absolute; top:69%; left:6%; width:88%; padding:28px 30px;
+  border:3px dashed #B9A7E8; border-radius:14px; font-family:'NotoDev'; font-size:30px;
+  line-height:1.45; text-align:center; }
+.citation .hl-blue{ color:#8EA2FF; font-weight:700; }
+.citation .hl-yellow{ color:var(--yellow); font-weight:700; }
+
+.footerbar{ position:absolute; top:87%; left:0; width:100%; height:9%;
+  background:rgba(255,255,255,0.06); display:flex; align-items:center; justify-content:space-around;
+  padding:0 4%; border-top:1px solid rgba(255,255,255,.15); border-bottom:1px solid rgba(255,255,255,.15); }
+.footerbar .col{ text-align:center; font-family:'Manrope'; }
+.footerbar .name{ color:var(--yellow); font-weight:800; font-size:24px; }
+.footerbar .role{ font-size:18px; color:#ddd; margin-top:2px; }
+.footerbar .medal{ font-size:34px; }
+.footerbar .award{ color:var(--yellow); font-weight:800; font-size:22px; }
+.footerbar .reason{ font-size:16px; color:#ccc; margin-top:2px; max-width:260px; }
+
+.iconrow{ position:absolute; top:97%; width:100%; text-align:center; font-size:22px; letter-spacing:8px; color:#fff; }
+</style>
+</head>
+<body>
+  <div class="photo-bleed">
+    <img src="file://{{ photo_path }}">
+    <div class="scrim"></div>
+  </div>
+  <img class="dotgrid tl" src="file://{{ decor_dir }}/dot_grid_white.svg">
+  <img class="dotgrid br" src="file://{{ decor_dir }}/dot_grid_white.svg">
+
+  <div class="logo"><img src="file://{{ logo_path }}"></div>
+  <div class="congrats">{{ congrats_word }}</div>
+
+  <div class="citation">{{ citation_html }}</div>
+
+  <div class="footerbar">
+    <div class="col"><div class="name">{{ person_name }}</div><div class="role">{{ person_role }}</div></div>
+    <div class="col medal">{{ medal_emoji | default("\U0001F3C5") }}</div>
+    <div class="col"><div class="award">{{ award_name }}</div><div class="reason">{{ award_reason }}</div></div>
+  </div>
+
+  <div class="iconrow">▶ 𝕏 ◎ f &nbsp; Navodayans Talk</div>
+</body>
+</html>

@@ -1,0 +1,126 @@
+{
+  "version": "1.0",
+  "source": "Measured from Era 4 (latest) NVT congratulation posters, Sep 2025-Sep 2026",
+  "canvas": {
+    "primary": {"width": 1440, "height": 1800, "ratio": "4:5"},
+    "square": {"width": 1440, "height": 1440, "ratio": "1:1"},
+    "story": {"width": 1080, "height": 1920, "ratio": "9:16"}
+  },
+  "margins": {
+    "text_side_pct": 9,
+    "photo_side_pct": 10,
+    "footer_reserved_pct": 8
+  },
+  "colors": {
+    "nvt_blue":   {"hex": "#1818F0", "role": "headline / script / name",
+                    "confirmed_by_sampling": true, "measured_range": ["#06047E", "#212C99"]},
+    "nvt_red":    {"hex": "#F01800", "role": "alert / achievement / category pill",
+                    "confirmed_by_sampling": true, "measured_range": ["#E50F0E", "#F70102", "#F63131"]},
+    "nvt_yellow": {"hex": "#FFE600", "role": "accent / footer bar / medal ribbon",
+                    "confirmed_by_sampling": false,
+                    "correction_note": "brief recorded NVT Amber #F0A830; pixel sampling found a brighter lemon yellow instead",
+                    "measured_range": ["#F9E41B", "#FBEC5A", "#EFD324"]},
+    "ink":        {"hex": "#111111", "role": "body copy"},
+    "paper":      {"hex": "#F8F6F1", "role": "Template A/C background base"},
+    "ink_black":  {"hex": "#0A0A0A", "role": "Template B background, Template C lower half"},
+    "grey":       {"hex": "#6B7280", "role": "captions / de-emphasised text"},
+    "white":      {"hex": "#FFFFFF", "role": "text on dark, card fills"}
+  },
+  "fonts": {
+    "devanagari": {"file": "NotoSansDevanagari.ttf", "family": "Noto Sans Devanagari", "weights": [400, 600, 800]},
+    "devanagari_alt": {"file": "TiroDevanagariHindi-Regular.ttf", "family": "Tiro Devanagari Hindi", "use": "optional historic/serif look only"},
+    "latin_display": {"file": "Montserrat-Regular.ttf", "family": "Montserrat", "use": "Template B/C bold caps CONGRATULATIONS"},
+    "latin_body": {"file": "Manrope.ttf", "family": "Manrope", "weights": [500, 700, 800]},
+    "script_headline": {"file": "assets/decor/congratulations_script.svg", "use": "Template A hand-drawn CONGRATULATIONS"}
+  },
+  "type_scale_at_1440w": {
+    "congratulations_script_px": [90, 110],
+    "achievement_headline_px": [56, 64],
+    "name_line_px": [48, 54],
+    "body_paragraph_px": [34, 40],
+    "footer_wordmark_px": 28,
+    "min_body_px_floor": 28
+  },
+  "logo": {
+    "light_bg_file": "assets/logo/nvt_logo_light.png",
+    "dark_bg_file": "assets/logo/nvt_logo_dark_halo.png",
+    "never": ["recolour", "restretch", "redraw", "merge with JNV/NVS emblem"],
+    "clear_space": "logo height on every side",
+    "placements": {
+      "centered_large": {"x_pct": [41, 59], "y_pct": [4, 13]},
+      "corner_small": {"x_pct": [2, 12], "y_pct": [2, 9]}
+    }
+  },
+  "photo_rules": {
+    "crop": "head+shoulders to waist, eyes in upper third, never crop top of head or chin",
+    "cutout": false,
+    "color_correction": "light levels/white-balance only, no filters, no saturation boost",
+    "min_source_px": 800,
+    "max_upscale": 1.5,
+    "frame_radius_pct_of_photo_width": 2
+  },
+  "templates": {
+    "A_portrait_statement": {
+      "label": "Portrait & Statement",
+      "use_for": ["exam rank", "appointment", "honour"],
+      "canvas": "primary",
+      "blocks": {
+        "logo":            {"x_pct": [41, 59], "y_pct": [4, 13]},
+        "congrats_script":  {"x_pct": [22, 78], "y_pct": [14, 22]},
+        "category_pill":    {"x_pct": [30, 70], "y_pct": [24, 30], "optional": true},
+        "fact_sentence":    {"x_pct": [9, 91], "y_pct": [31, 43]},
+        "photo_frame":      {"x_pct": [10, 90], "y_pct": [45, 82]},
+        "rank_medallion":   {"x_pct": [75, 93], "y_pct": [70, 82], "optional": true},
+        "jnv_state_line":   {"x_pct": [9, 91], "y_pct": [83, 89]},
+        "footer_bar":       {"x_pct": [0, 100], "y_pct": [92, 100]}
+      }
+    },
+    "B_editorial_honor": {
+      "label": "Editorial Honor",
+      "use_for": ["ceremony photo", "group photo", "ambassador/honour with no clean portrait"],
+      "canvas": "primary",
+      "blocks": {
+        "photo_bleed":      {"x_pct": [0, 100], "y_pct": [0, 62]},
+        "logo":             {"x_pct": [22, 32], "y_pct": [58, 66]},
+        "congrats_caps":    {"x_pct": [0, 100], "y_pct": [60, 68]},
+        "citation_box":     {"x_pct": [6, 94], "y_pct": [70, 84]},
+        "footer_info_bar":  {"x_pct": [0, 100], "y_pct": [88, 96]},
+        "icon_row":         {"x_pct": [0, 100], "y_pct": [96, 100]}
+      }
+    },
+    "D_official_brand_kit": {
+      "label": "Official Brand Kit Achievement Creative",
+      "source": "Brand Kit v2.0 p.12, distinct from A/B/C which follow actual published Instagram posts",
+      "use_for": ["when a clean, strictly-on-kit creative is wanted instead of the richer Instagram house style"],
+      "canvas": "kit_post",
+      "color_discipline": "one main (Blue #2E35E8) + one accent (Red #F13B19) ONLY — no yellow/orange/pink/green, no gradients, no shadows/glow, one font family per language",
+      "blocks": {
+        "headline":  {"x_pct": [0, 70], "y_pct": [4, 12], "align": "left"},
+        "photo":     {"x_pct": [0, 100], "y_pct": [18, 70]},
+        "name":      {"x_pct": [0, 100], "y_pct": [72, 78]},
+        "meta_lines":{"x_pct": [0, 100], "y_pct": [79, 88]},
+        "source_note":{"x_pct": [0, 100], "y_pct": [89, 92]},
+        "logo":      {"x_pct": [88, 97], "y_pct": [95, 99], "align": "right"}
+      }
+    },
+    "C_achievement_spotlight": {
+      "label": "Achievement Spotlight",
+      "use_for": ["sports", "physical/medal achievement"],
+      "canvas": "primary",
+      "blocks": {
+        "logo":             {"x_pct": [2, 10], "y_pct": [2, 7]},
+        "photo_gradient":   {"x_pct": [0, 100], "y_pct": [0, 68]},
+        "event_pill":       {"x_pct": [15, 85], "y_pct": [56, 63]},
+        "medal_subhead":    {"x_pct": [25, 75], "y_pct": [64, 68]},
+        "name_plate":       {"x_pct": [15, 70], "y_pct": [70, 75]},
+        "body_paragraph":   {"x_pct": [6, 94], "y_pct": [82, 94]},
+        "icon_row":         {"x_pct": [0, 100], "y_pct": [96, 100]}
+      }
+    }
+  },
+  "overflow_rules": {
+    "long_name_chars_threshold": 22,
+    "steps": ["reduce font 10%", "wrap to 2 lines", "stop and flag to user"],
+    "never": ["shrink below min_body_px_floor", "truncate text", "bleed outside safe margin"]
+  }
+}

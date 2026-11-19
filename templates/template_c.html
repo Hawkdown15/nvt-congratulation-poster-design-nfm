@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+@font-face { font-family:'NotoDev'; src:url('file://{{ fonts_dir }}/NotoSansDevanagari.ttf'); font-weight:400 800; }
+@font-face { font-family:'Manrope'; src:url('file://{{ fonts_dir }}/Manrope.ttf'); font-weight:400 800; }
+@font-face { font-family:'Anton'; src:url('file://{{ fonts_dir }}/Anton-Regular.ttf'); }
+
+:root{ --red:#F01800; --yellow:#FFE600; --ink:#111111; }
+*{ box-sizing:border-box; margin:0; padding:0; }
+body{ width:{{ canvas_w }}px; height:{{ canvas_h }}px; position:relative; overflow:hidden;
+  background:#000; font-family:'NotoDev','Manrope',sans-serif; color:#fff; }
+
+.photo{ position:absolute; top:0; left:0; width:100%; height:70%; overflow:hidden; }
+.photo img{ width:100%; height:100%; object-fit:cover; display:block; }
+.photo .scrim{ position:absolute; inset:0;
+  background:linear-gradient(to bottom, rgba(245,240,230,0) 45%, #000 95%); }
+
+.logo{ position:absolute; left:3%; top:2.5%; width:9%; z-index:3; }
+.logo img{ width:100%; display:block; }
+
+.pill-wrap{ position:absolute; top:55%; width:100%; text-align:center; z-index:3; }
+.pill{ display:inline-block; border:3px dashed var(--red); border-radius:40px; padding:12px 34px;
+  background:rgba(0,0,0,.35); color:var(--red); font-family:'Manrope'; font-weight:800; font-size:34px;
+  box-shadow:0 6px 14px rgba(0,0,0,.4); }
+
+.medal-sub{ position:absolute; top:63.5%; width:100%; text-align:center; z-index:3;
+  font-family:'Anton'; color:var(--yellow); font-size:44px; letter-spacing:1px; }
+
+.nameplate-wrap{ position:absolute; top:70.5%; width:100%; text-align:center; z-index:3; }
+.nameplate{ display:inline-block; background:#fff; color:var(--ink); font-weight:800; font-size:34px;
+  padding:10px 30px; clip-path: polygon(2% 10%,98% 0%,100% 85%,96% 100%,3% 92%,0% 15%); }
+.nameplate .sub{ display:block; font-size:18px; font-weight:600; color:#333; margin-top:2px; }
+
+.body{ position:absolute; top:80%; left:6%; width:88%; text-align:center; font-family:'NotoDev';
+  font-size:28px; line-height:1.5; z-index:3; }
+.body .hl-y{ color:var(--yellow); font-weight:700; } .body .hl-r{ color:#FF6B5B; font-weight:700; }
+
+.iconrow{ position:absolute; top:96.5%; width:100%; text-align:center; font-size:20px; letter-spacing:8px; }
+</style>
+</head>
+<body>
+  <div class="photo"><img src="file://{{ photo_path }}"><div class="scrim"></div></div>
+  <div class="logo"><img src="file://{{ logo_path }}"></div>
+
+  <div class="pill-wrap"><div class="pill">{{ event_name }}</div></div>
+  <div class="medal-sub">{{ medal_subhead }}</div>
+  <div class="nameplate-wrap">
+    <div class="nameplate">{{ person_name }}<span class="sub">{{ person_subline }}</span></div>
+  </div>
+  <div class="body">{{ body_html }}</div>
+  <div class="iconrow">▶ 𝕏 ◎ f &nbsp; Navodayans Talk</div>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+@font-face { font-family:'NotoDev'; src:url('file://{{ fonts_dir }}/NotoSansDevanagari.ttf'); font-weight:400 800; }
+@font-face { font-family:'Manrope'; src:url('file://{{ fonts_dir }}/Manrope.ttf'); font-weight:400 800; }
+
+:root{
+  /* Official brand-kit palette (Brand Kit v2.0, p.6) */
+  --blue:#2E35E8;   /* Navodaya Blue - main */
+  --red:#F13B19;    /* Talk Red - the one accent */
+  --ink:#111111;
+  --grey:#6B7280;
+  --paper:#F8F6F1;
+  --white:#FFFFFF;
+}
+*{ box-sizing:border-box; margin:0; padding:0; }
+body{
+  width:{{ canvas_w }}px; height:{{ canvas_h }}px; position:relative;
+  background:var(--paper);
+  font-family:'Manrope','NotoDev',sans-serif; color:var(--ink);
+}
+/* Single safe-margin card, per Layout System p.8 (90px safe margin @1080 wide) */
+.card{ position:absolute; left:{{ margin_px }}px; top:{{ margin_px }}px;
+  width:calc(100% - {{ margin_px * 2 }}px); height:calc(100% - {{ margin_px * 2 }}px);
+  display:flex; flex-direction:column; }
+
+.headline{ font-family:'Manrope'; font-weight:800; font-size:{{ headline_px | default(52) }}px;
+  color:var(--red); text-align:left; line-height:1.15; }
+
+.photo{ margin-top:5%; width:100%; flex:1 1 auto; min-height:0; border:1px solid #E2DED3;
+  border-radius:4px; overflow:hidden; background:var(--white); }
+.photo img{ width:100%; height:100%; object-fit:cover; display:block; }
+
+.name{ margin-top:5%; font-family:'Manrope'; font-weight:800; font-size:{{ name_px | default(34) }}px;
+  color:var(--blue); }
+.name.devanagari{ font-family:'NotoDev'; }
+
+.meta{ margin-top:1.2%; font-family:'NotoDev','Manrope',sans-serif; font-size:20px;
+  line-height:1.5; color:var(--ink); }
+.meta .line{ margin-bottom:2px; }
+
+.source{ margin-top:1.5%; font-size:14px; color:var(--grey); font-style:italic; }
+
+.footer{ margin-top:auto; padding-top:3%; display:flex; justify-content:flex-end; align-items:center; }
+.footer img{ height:{{ logo_height_px | default(42) }}px; }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="headline">{{ achievement_headline }}</div>
+
+    <div class="photo"><img src="file://{{ photo_path }}"></div>
+
+    <div class="name {{ 'devanagari' if name_is_devanagari else '' }}">{{ person_name }}</div>
+
+    <div class="meta">
+      {% if role_line %}<div class="line">{{ role_line }}</div>{% endif %}
+      {% if jnv_state_line %}<div class="line">{{ jnv_state_line }}</div>{% endif %}
+      {% if batch_line %}<div class="line">{{ batch_line }}</div>{% endif %}
+    </div>
+
+    {% if source_note %}<div class="source">{{ source_note }}</div>{% endif %}
+
+    <div class="footer"><img src="file://{{ logo_path }}"></div>
+  </div>
+</body>
+</html>
